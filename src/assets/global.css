@@ -1,0 +1,25 @@
+*{
+    margin: 0 0;
+    padding: 0 0;
+    box-sizing: border-box;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+.mr-5 {
+    margin-right: 5px;
+}
+.mr-20 {
+    margin-right: 20px;
+}
+.pd-10 {
+    padding: 10px 0;
+}
+
+/* 垂直方向 box-shadow 效果 */
+.bs-v {
+    box-shadow: 6px 0 2px rgba(0 21 41 / 35%);
+}
+
+

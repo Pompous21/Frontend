@@ -8,8 +8,26 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: { title: '云图' }
   },
+  // {
+  //   path: '/header',
+  //   name: 'Header',
+  //   component: Header,
+  //   mata: { title: '首部' }
+  // },
+  // { path: '/main', name: 'Main', component: Main, mata: { title: '躯干' } },
+  // { path: '/footer', name: 'Footer', component: Footer, mata: { title: '尾部' } },
+  // { path: '/left-entry', name: 'LeftEntry', component: LeftEntry, mata: { title: '左侧入口' } },
+  // { path: '/center-search', name: 'CenterSearch', component: CenterSearch, mata: { title: '中部搜索' } },
+  // { path: '/right-entry', name: 'RightEntry', component: RightEntry, mata: { title: '右侧入口' } },
+
+
+
+
+
+
   {
     path: '/about',
     name: 'About',
