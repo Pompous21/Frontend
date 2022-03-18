@@ -1,6 +1,6 @@
 <template>
   <div style="height: 180px; width: 100%" class="bg-purple">
-
+    just for test
   </div>
 </template>
 
