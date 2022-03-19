@@ -18,7 +18,10 @@
     data() {
       return {
         index_header: 0,
-        bg_header: 'Transparent'
+        bg_header: 'Transparent',
+        headerFontColor: {
+          color: "#FFFFFF"
+        }
       }
     },
     mounted() {
@@ -28,16 +31,26 @@
     methods: {
       // 监听滚动条并改变头部菜单
       handleScroll() {
-        console.log(this.$refs.App.scrollTop);
-        console.log(this.$refs.App.scrollHeight);
-        if (this.$refs.App.scrollTop === 0) {
+        let scroll = this.$refs.App.scrollTop
+        // console.log(scroll);
+        // console.log(this.$refs.App.scrollHeight);
+        if (scroll === 0) {
           this.index_header = 0;
           this.bg_header = "Transparent";
+          this.headerFontColor.color = "#FFFFFF";
         }
         else {
           this.index_header = 1000;
-          this.bg_header = "#FFFFFF"
+          this.bg_header = "#FFFFFF";
+          this.headerFontColor.color = "#18191C";
         }
+        // console.log(this.headerFontColor.color)
+      }
+    },
+    // provide 可以跨组件传值，但要传一个可以监听的值才能监听
+    provide() {
+      return {
+        headerFontColor: this.headerFontColor
       }
     }
   }
