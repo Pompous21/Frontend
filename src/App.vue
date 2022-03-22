@@ -1,31 +1,46 @@
 <template>
   <div style="height: 100vh; overflow: auto" id="app" ref="App">
     <!--  最外层div要这么写才能监听  -->
-    <Header class="header" :style="{zIndex: index_header, background: bg_header, boxShadow: bs}" />
+    <Header class="header" :style="{zIndex: index_header, background: bg_header, boxShadow: bs}" @loginDialogVisibleOn="loginDialogVisible = true" @refreshUser="getUser" />
     <router-view/>
+
+    <Login :loginDialogVisible="loginDialogVisible" @loginDialogVisibleOff="loginDialogVisible = false" @refreshUser="getUser"/>
   </div>
 </template>
 
 <script>
 
   import Header from "./components/Header";
+  import Login from "./components/Login";
 
   export default {
     name: "App",
     components: {
-      Header
+      Header,
+      Login
     },
     data() {
       return {
-        // 控制头部菜单元素
+        // 滚动条
         scroll: 0,
+        // 头部菜单元素
         index_header: 0,
         bg_header: 'Transparent',
         bs: "0 0 0 0",
+        // 头部菜单字体
         headerFontColor: {
           color: "#FFFFFF"
-        }
+        },
+
+        // 当前已登录用户信息
+        user: { name: '' },
+
+        // 登录窗口
+        loginDialogVisible: false,
       }
+    },
+    created() {
+      this.getUser();
     },
     mounted() {
       // 监听滚动条
@@ -47,12 +62,27 @@
           this.headerFontColor.color = "#18191C";
           this.bs = "0 0 2px 0 rgba(0 21 41 / 35%)"
         }
+      },
+
+      // 获取后台存放的最新用户信息
+      getUser() {
+        let id = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : ""
+        if (id) {
+          this.request.get("/user/" + id).then(res => {
+            this.user.name = res.data.name
+          })
+        }
+        else {
+          this.user.name = ''
+        }
       }
     },
+
     // provide 可以跨组件传值，但要传一个可以监听的值才能监听
     provide() {
       return {
-        headerFontColor: this.headerFontColor
+        headerFontColor: this.headerFontColor,
+        user: this.user
       }
     }
   }

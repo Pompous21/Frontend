@@ -1,34 +1,57 @@
 <template>
-  <div >
+  <div>
+    <!--  后面看情况补条件渲染  -->
+    <el-popover placement="bottom" trigger="hover" class="mr-20">
+      <!--已登录的情况      -->
+      <div v-if="user.name">
+        <router-link to="/person" style="text-decoration: none">个人信息 </router-link>
+        <div style="text-decoration: none; cursor: pointer" @click="handleLogout">退出登录 </div>
+      </div>
+      <!--未登录的情况      -->
+      <div v-else>
+        <div>朋友，欢迎你 </div>
+        <div style="text-decoration: none; cursor: pointer" @click="$emit('loginDialogVisibleOn')">登录 </div>
+      </div>
+
+      <div slot="reference" style="display: inline-block" :style="{color: this.headerFontColor.color}">
+        <div v-if="this.user.name">
+          <span class="mr-5">{{this.user.name}} </span>
+          <el-avatar size="medium" :src="user.avatar" style="vertical-align: middle"></el-avatar>
+        </div>
+        <div v-else>
+          <span class="mr-5">游客朋友 </span>
+        </div>
+      </div>
+    </el-popover>
+
     <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}">会员</el-button>
     <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}">信息</el-button>
     <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}">历史</el-button>
     <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}">语言更换</el-button>
-    <el-dropdown style="cursor: pointer" class="mr-20">
-      <div>
-        <el-avatar size="medium" src="../../assets/logo.png" style="vertical-align: middle" class="mr-5"></el-avatar>
-        <span> 你的名字 <i class="el-icon-arrow-down" style="margin-left: 5px"></i></span>
-      </div>
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>
-          <router-link to="/person">个人信息</router-link>
-        </el-dropdown-item>
-        <el-dropdown-item>
-          <span style="text-decoration: none" @click="logout">退出登录</span>
-        </el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
+
+
+
+
   </div>
 </template>
 
 <script>
   export default {
     name: "RightEntry",
-    inject: ['headerFontColor'],
-    methods: {
-      logout() {
+    inject: ['headerFontColor', 'user'],
+    data() {
+      return {
 
       }
+    },
+    methods: {
+      handleLogout() {
+        localStorage.removeItem("user")
+        this.$emit('refreshUser')
+        this.$message.success("退出成功")
+      },
+
+
     }
   }
 </script>

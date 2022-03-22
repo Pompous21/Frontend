@@ -5,7 +5,9 @@
 
       <el-col :span="6"><div class="grid-content" style="line-height: 64px"><CenterSearch /></div></el-col>
 
-      <el-col :span="6"><div class="grid-content" style="line-height: 64px"><RightEntry style="text-align: right" /></div></el-col>
+      <el-col :span="6"><div class="grid-content" style="line-height: 64px" >
+        <RightEntry style="text-align: right" @loginDialogVisibleOn="$emit('loginDialogVisibleOn')" @refreshUser="$emit('refreshUser')" />
+      </div></el-col>
     </el-row>
   </div>
 </template>
