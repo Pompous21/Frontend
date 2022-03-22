@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row type="flex" class="row-bg" justify="space-between">
+    <el-row type="flex" justify="space-between">
       <el-col :span="6"><div class="grid-content" style="line-height: 64px"><LeftEntry /></div></el-col>
 
       <el-col :span="6"><div class="grid-content" style="line-height: 64px"><CenterSearch /></div></el-col>

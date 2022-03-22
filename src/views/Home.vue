@@ -1,18 +1,25 @@
 <template>
   <div>
-    <Main />
+    <!--  Main  -->
+    <Banner />
+    <Channel />
+    <Layout />
     <Footer />
   </div>
 </template>
 
 <script>
-import Main from "../components/Main";
-import Footer from "../components/Footer";
+import Banner from "./home/Banner";
+import Channel from "./home/Channel";
+import Layout from "./home/Layout";
+import Footer from "./home/Footer";
 
 export default {
   name: 'Home',
   components: {
-    Main,
+    Banner,
+    Channel,
+    Layout,
     Footer
   }
 
