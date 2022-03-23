@@ -1,14 +1,15 @@
 <template>
   <div>
-    <el-link :href="'http://' + serverIp + ':' + fPort + '/'" class="mr-20" :underline="false"
-             :style="{color: this.headerFontColor.color}" style="margin-right: 20px">
-      <img src="../../assets/logo.png" style="width: 30px; position: relative; top: 10px; right: 5px" />云图
+    <el-link :href="'http://' + serverIp + ':' + fPort + '/'" class="header-btn" :underline="false"
+             :style="{color: this.headerFontColor.color}"  >
+      <img src="../../assets/logo.png" style="width: 30px; position: relative; top: 10px; right: 5px;" />
+      <span style="font-family: Arial; font-size: 14px">云图</span>
     </el-link>
-    <el-button type="text" class="mr-20" style="margin-left: 10px" :style="{color: this.headerFontColor.color}" @click="handleVisit(url_1)">暨南大学</el-button>
-    <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}" @click="handleVisit(url_2)">理工学院</el-button>
-    <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}" @click="handleVisit(url_3)">光电工程系</el-button>
-    <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}" @click="handleVisit(url_4)">合作</el-button>
-    <el-button type="text" :style="{color: this.headerFontColor.color}" @click="handleVisit(url_5)">咨询</el-button>
+    <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}" @click="handleVisit(url_1)">暨南大学</el-button>
+    <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}" @click="handleVisit(url_2)">理工学院</el-button>
+    <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}" @click="handleVisit(url_3)">光电工程系</el-button>
+    <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}" @click="handleVisit(url_4)">合作</el-button>
+    <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}" @click="handleVisit(url_5)">咨询</el-button>
   </div>
 </template>
 
@@ -43,4 +44,8 @@
 </script>
 
 <style scoped>
+  .header-btn {
+    margin-right: 20px;
+    vertical-align: middle;
+  }
 </style>

@@ -28,6 +28,7 @@
     props: {
       loginDialogVisible: Boolean
     },
+    inject: ['reloadView'],
     data() {
       return {
         // 控制页面
@@ -68,6 +69,7 @@
             this.$message.error(res.msg)
           }
           this.$emit('refreshUser')
+          this.reloadView()
         })
       },
       register() {

@@ -2,7 +2,7 @@
   <div style="height: 100vh; overflow: auto" id="app" ref="App">
     <!--  最外层div要这么写才能监听  -->
     <Header class="header" :style="{zIndex: index_header, background: bg_header, boxShadow: bs}" @loginDialogVisibleOn="loginDialogVisible = true" @refreshUser="getUser" />
-    <router-view/>
+    <router-view v-if="isRouterAlive" />
 
     <Login :loginDialogVisible="loginDialogVisible" @loginDialogVisibleOff="loginDialogVisible = false" @refreshUser="getUser"/>
   </div>
@@ -33,10 +33,17 @@
         },
 
         // 当前已登录用户信息
-        user: { name: '' },
+        userInfo: {
+          id: '',
+          name: '',
+          avatar: ''
+        },
 
         // 登录窗口
         loginDialogVisible: false,
+
+        // 控制刷新页面
+        isRouterAlive: true
       }
     },
     created() {
@@ -64,17 +71,29 @@
         }
       },
 
-      // 获取后台存放的最新用户信息
+      // 获取后台存放的最新用户信息，提供给头部菜单
       getUser() {
         let id = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : ""
         if (id) {
           this.request.get("/user/" + id).then(res => {
-            this.user.name = res.data.name
+            this.userInfo.id = res.data.id
+            this.userInfo.name = res.data.name
+            this.userInfo.avatar = res.data.avatar
           })
         }
         else {
-          this.user.name = ''
+          this.userInfo.id = ''
+          this.userInfo.name = ''
+          this.userInfo.avatar = ''
         }
+      },
+
+      // 控制刷新页面，通过provide与inject组合使用
+      reloadView() {
+        this.isRouterAlive = false
+        this.$nextTick(function() {
+          this.isRouterAlive = true
+        })
       }
     },
 
@@ -82,7 +101,9 @@
     provide() {
       return {
         headerFontColor: this.headerFontColor,
-        user: this.user
+        user: this.userInfo,
+
+        reloadView: this.reloadView
       }
     }
   }
