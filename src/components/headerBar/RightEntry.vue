@@ -1,18 +1,58 @@
 <template>
   <div>
-    <el-link href="http://localhost:8080/" class="mr-20" :underline="false" style="color: #18191C">
-      <img src="../../assets/logo.png" style="width: 30px; position: relative; top: 10px; right: 5px" />
-    </el-link>
-    <el-button type="text" class="mr-20" style="color: #18191C">文字按钮</el-button>
-    <el-button type="text" class="mr-20" style="color: #18191C">按钮</el-button>
-    <el-button type="text" class="mr-20" style="color: #18191C">文字按扭</el-button>
-    <el-button type="text" style="color: #18191C">按钮</el-button>
+    <!--  后面看情况补条件渲染  -->
+    <el-popover placement="bottom" trigger="hover" class="mr-20">
+      <!--已登录的情况      -->
+      <div v-if="user.name">
+        <router-link to="/person" style="text-decoration: none">个人信息 </router-link>
+        <div style="text-decoration: none; cursor: pointer" @click="handleLogout">退出登录 </div>
+      </div>
+      <!--未登录的情况      -->
+      <div v-else>
+        <div>朋友，欢迎你 </div>
+        <div style="text-decoration: none; cursor: pointer" @click="$emit('loginDialogVisibleOn')">登录 </div>
+      </div>
+
+      <div slot="reference" style="display: inline-block" :style="{color: this.headerFontColor.color}">
+        <div v-if="this.user.name">
+          <span class="mr-5">{{this.user.name}} </span>
+          <el-avatar size="medium" :src="user.avatar" style="vertical-align: middle"></el-avatar>
+        </div>
+        <div v-else>
+          <span class="mr-5">游客朋友 </span>
+        </div>
+      </div>
+    </el-popover>
+
+    <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}">会员</el-button>
+    <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}">信息</el-button>
+    <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}">历史</el-button>
+    <el-button type="text" class="mr-20" :style="{color: this.headerFontColor.color}">语言更换</el-button>
+
+
+
+
   </div>
 </template>
 
 <script>
   export default {
-    name: "RightEntry"
+    name: "RightEntry",
+    inject: ['headerFontColor', 'user'],
+    data() {
+      return {
+
+      }
+    },
+    methods: {
+      handleLogout() {
+        localStorage.removeItem("user")
+        this.$emit('refreshUser')
+        this.$message.success("退出成功")
+      },
+
+
+    }
   }
 </script>
 

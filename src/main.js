@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './assets/global.css'
 import request from "./utils/request";
 
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);

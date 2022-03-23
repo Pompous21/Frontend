@@ -15,8 +15,8 @@
 </template>
 
 <script>
-  import TipsCard from "../session/TipsCard";
-  import FunctionCard from "../session/FunctionCard";
+  import TipsCard from "../../components/session/TipsCard";
+  import FunctionCard from "../../components/session/FunctionCard";
 
   export default {
     name: "Layout",

@@ -1,17 +1,17 @@
 <template>
   <div style="height: 120px; padding: 0 96px; display: flex">
-    <div style="flex: 1; width: 15%; margin: 20px 20px">
-      <el-row :gutter="10">
+    <div style=" width: 15%; margin: 20px 0">
+      <el-row :gutter="0">
         <el-col :span="8">
-          <img src="../../assets/logo.png" style="width: 50px; position: relative" />
+          <img src="../../assets/oscilloscope.png" style="width: 50px; position: relative" />
           <div class="grid-content" style="height: 20px; width: 50px; text-align: center; line-height: 36px;">菜单1</div>
         </el-col>
         <el-col :span="8">
-          <img src="../../assets/logo.png" style="width: 50px; position: relative" />
+          <img src="@/assets/oscilloscope.png" style="width: 50px; position: relative" />
           <div class="grid-content" style="height: 20px; width: 50px; text-align: center; line-height: 36px;">菜单2</div>
         </el-col>
         <el-col :span="8">
-          <img src="../../assets/logo.png" style="width: 50px; position: relative" />
+          <img src="@/assets/oscilloscope.png" style="width: 50px; position: relative" />
           <div class="grid-content" style="height: 20px; width: 50px; text-align: center; line-height: 36px;">菜单3</div>
         </el-col>
       </el-row>

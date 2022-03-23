@@ -4,7 +4,6 @@ import {serverIp} from "../../public/config";
 
 const request = axios.create({
   baseURL: `http://${serverIp}:9090`,
-  // `http://${serverIp}:9090` 对比原来 'http://localhost:9090'
   timeout: 5000
 })
 
