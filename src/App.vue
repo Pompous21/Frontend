@@ -33,7 +33,7 @@
         },
 
         // 当前已登录用户信息
-        user: { name: '' },
+        userInfo: { name: '', avatar: '' },
 
         // 登录窗口
         loginDialogVisible: false,
@@ -69,11 +69,13 @@
         let id = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : ""
         if (id) {
           this.request.get("/user/" + id).then(res => {
-            this.user.name = res.data.name
+            this.userInfo.name = res.data.name
+            this.userInfo.avatar = res.data.avatar
           })
         }
         else {
-          this.user.name = ''
+          this.userInfo.name = ''
+          this.userInfo.avatar = ''
         }
       }
     },
@@ -82,7 +84,7 @@
     provide() {
       return {
         headerFontColor: this.headerFontColor,
-        user: this.user
+        user: this.userInfo
       }
     }
   }
