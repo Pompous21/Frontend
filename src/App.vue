@@ -71,7 +71,7 @@
         }
       },
 
-      // 获取后台存放的最新用户信息，提供给头部菜单
+      // 获取后台存放的最新用户信息，并更新到浏览器，然后提供给头部菜单
       getUser() {
         let id = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : ""
         if (id) {
@@ -79,6 +79,7 @@
             this.userInfo.id = res.data.id
             this.userInfo.name = res.data.name
             this.userInfo.avatar = res.data.avatar
+            localStorage.setItem("user", JSON.stringify(res.data))
           })
         }
         else {
@@ -103,6 +104,7 @@
         headerFontColor: this.headerFontColor,
         user: this.userInfo,
 
+        refreshUser: this.getUser,
         reloadView: this.reloadView
       }
     }

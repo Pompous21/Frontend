@@ -42,6 +42,7 @@
 
   export default {
     name: "PersonalSettings",
+    inject: ['refreshUser'],
     data() {
       return {
         serverIp: serverIp,
@@ -77,6 +78,7 @@
         this.request.post("/user", this.userSettingsForm).then(res => {
           if (res.code === '5000') {
             this.$message.success("更新成功")
+            this.refreshUser()
           }
           else {
             this.$message.error("更新失败")

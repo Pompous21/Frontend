@@ -1,7 +1,7 @@
 <template>
   <div style="margin-right: 20px">
     <div style="height: 35px; margin-bottom: 15px; line-height: 35px; font-size: 25px">
-      功能1
+      {{functionName}}
     </div>
     <el-row style="margin: 0 0">
       <el-col :span="12" style="height: 450px; padding-right: 20px">
@@ -42,7 +42,8 @@
   export default {
     name: "FunctionCard",
     props: {
-
+      functionName: String,
+      functionPath: String,
     },
     data() {
       return {
@@ -69,7 +70,7 @@
       },
       uploadSuccess(res) {
         this.uploadUrl = res
-        this.request.get("/img/dith", {
+        this.request.get(this.functionPath, {
           params: { rawUrl: this.uploadUrl }
         }).then(res => {
           window.open(res)
