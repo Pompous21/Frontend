@@ -1,11 +1,11 @@
 <template>
   <div style="margin-right: 20px">
     <div style="height: 35px; margin-bottom: 15px; line-height: 35px; font-size: 25px">
-      {{functionName}}
+      {{ this.functionName }}
     </div>
     <el-row style="margin: 0 0">
       <el-col :span="12" style="height: 450px; padding-right: 20px">
-        <span>功能使用区</span>
+        <span>功能区</span>
         <div>
           <el-upload ref="upload" :action="'http://' + serverIp + ':' + bPort + '/files/upload'" list-type="picture-card"
                      :auto-upload="false" :file-list="fileList" :on-success="uploadSuccess">
@@ -31,7 +31,7 @@
         </div>
 
       </el-col>
-      <el-col :span="12" style="height: 450px">功能展示区</el-col>
+      <el-col :span="12" style="height: 450px">展示区</el-col>
     </el-row>
   </div>
 </template>

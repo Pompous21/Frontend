@@ -101,9 +101,11 @@
     // provide 可以跨组件传值，但要传一个可以监听的值才能监听
     provide() {
       return {
+        // 数据
         headerFontColor: this.headerFontColor,
         user: this.userInfo,
 
+        // 方法
         refreshUser: this.getUser,
         reloadView: this.reloadView
       }

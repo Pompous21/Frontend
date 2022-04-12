@@ -5,11 +5,12 @@
   <el-card shadow="hover" body-style="padding: 5px" style="border-width: 2px" :style="{height: height}">
     <div style="height: 450px">
       <div style="height: 10%">
-        标题
+        {{ this.title }}
       </div>
       <div style="height: 90%">
-        <br>正文
-        <br>正文
+        <br>{{ this.introduction }}
+        <br>
+        <br>{{ this.text }}
       </div>
     </div>
     <div style="height: 50px">
@@ -22,7 +23,11 @@
   export default {
     name: "TipsCard",
     props: {
-      height: String
+      height: String,
+
+      title: String,
+      introduction: String,
+      text: String
     }
   }
 </script>

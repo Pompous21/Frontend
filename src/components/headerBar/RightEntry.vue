@@ -9,7 +9,7 @@
       </div>
       <!--未登录的情况      -->
       <div v-else>
-        <div>朋友，欢迎你 </div>
+        <div>没有登录也没关系，游客可原价获取服务 </div>
         <div style="text-decoration: none; cursor: pointer" @click="$emit('loginDialogVisibleOn')">登录 </div>
       </div>
 
@@ -30,7 +30,7 @@
     <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}">会员</el-button>
     <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}">信息</el-button>
     <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}">历史</el-button>
-    <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}">语言更换</el-button>
+    <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}">开发者</el-button>
 
 
 
