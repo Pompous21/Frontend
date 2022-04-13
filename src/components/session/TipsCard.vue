@@ -3,9 +3,9 @@
 
 <template>
   <el-card shadow="hover" body-style="padding: 5px" style="border-width: 2px" :style="{height: height}">
-    <div style="height: 450px">
+    <div style="height: 450px; margin: 5px">
       <div style="height: 10%">
-        {{ this.title }}
+        <strong>{{ this.title }}</strong>
       </div>
       <div style="height: 90%">
         <br>{{ this.introduction }}

@@ -2,7 +2,9 @@
   <div style="padding: 0 96px">
     <!--  一个功能对应一个 session  -->
     <div class="session">
-      <FunctionCard style="width: 80%" :function-name="this.sessions[0].name" :function-path="this.sessions[0].path" />
+      <FunctionCard style="width: 80%" :function-name="this.sessions[0].name" :function-path="this.sessions[0].path"
+                    :demo-img-url_a="sessions[0].demoImgUrlA" :demo-img-url_b="sessions[0].demoImgUrlB"
+                    :demo-img-url_c="sessions[0].demoImgUrlC" :demo-img-url_d="sessions[0].demoImgUrlD"/>
       <TipsCard style="width: 20%" :height="'500px'" :title="this.sessions[0].title" :introduction="this.sessions[0].introduction" :text="this.sessions[0].text" />
     </div>
 
@@ -28,6 +30,7 @@
       this.request.get("/function").then(res => {
         if (res.code === '1000') {
           this.sessions = res.data
+          console.log(res.data)
         }
       })
     },

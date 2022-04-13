@@ -29,9 +29,21 @@
             <img width="100%" :src="dialogImageUrl" alt="">
           </el-dialog>
         </div>
-
       </el-col>
-      <el-col :span="12" style="height: 450px">展示区</el-col>
+
+      <el-col :span="12" style="height: 450px">
+        <span>展示区</span>
+        <div>
+          <div class="demo-container">
+            <el-image class="demo-img" :src="demoImgUrl_a" :fit="'contain'"></el-image>
+            <el-image class="demo-img" :src="demoImgUrl_b" :fit="'contain'"></el-image>
+          </div>
+          <div class="demo-container">
+            <el-image class="demo-img" :src="demoImgUrl_c" :fit="'contain'"></el-image>
+            <el-image class="demo-img" :src="demoImgUrl_c" :fit="'contain'"></el-image>
+          </div>
+        </div>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -44,6 +56,11 @@
     props: {
       functionName: String,
       functionPath: String,
+
+      demoImgUrl_a: String,
+      demoImgUrl_b: String,
+      demoImgUrl_c: String,
+      demoImgUrl_d: String,
     },
     data() {
       return {
@@ -81,5 +98,12 @@
 </script>
 
 <style scoped>
-
+  .demo-container {
+    margin: 5px;
+  }
+  .demo-img {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 0 20px;
+  }
 </style>
