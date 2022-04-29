@@ -38,6 +38,7 @@
           name: '',
           avatar: ''
         },
+        userStorage: {},
 
         // 登录窗口
         loginDialogVisible: false,
@@ -79,7 +80,12 @@
             this.userInfo.id = res.data.id
             this.userInfo.name = res.data.name
             this.userInfo.avatar = res.data.avatar
-            localStorage.setItem("user", JSON.stringify(res.data))
+
+            this.userStorage = localStorage.getItem("user")
+            this.userStorage.id = res.data.id
+            this.userStorage.name = res.data.name
+            this.userStorage.avatar = res.data.avatar
+            localStorage.setItem("user", JSON.stringify(this.userStorage))
           })
         }
         else {

@@ -28,7 +28,7 @@
     </el-popover>
 
     <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}">会员</el-button>
-    <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}">信息</el-button>
+    <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}" @click="personalInfo">信息</el-button>
     <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}">历史</el-button>
     <el-button type="text" class="header-btn" :style="{color: this.headerFontColor.color}">开发者</el-button>
 
@@ -54,6 +54,9 @@
         this.$message.success("退出成功")
       },
 
+      personalInfo() {
+        this.$router.push("/personal-center")
+      }
 
     }
   }

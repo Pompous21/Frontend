@@ -3,7 +3,7 @@
     <el-dialog :title="loginOrRegister.dialogTitle" :visible.sync="loginDialogVisible" :before-close="handleClose" width="40%" style="text-align: center" >
       <div style="display: flex; margin: 0 30px">
         <div style="width: 40%">
-          Google
+          感谢使用云图！
         </div>
         <el-form ref="loginForm" :model="userLoginForm" :rules="loginRules"  label-width="80px" style="width: 60%">
           <el-form-item label="账号" prop="phone">
@@ -62,6 +62,7 @@
         this.request.post("/user/login", this.userLoginForm).then(res => {
           if (res.code === '2000') {
             // 存入当前用户信息
+            console.log(res.data)
             localStorage.setItem("user", JSON.stringify(res.data))
             this.$message.success('登陆成功')
           }

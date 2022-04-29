@@ -1,7 +1,7 @@
 <template>
   <div style="padding: 0 96px">
     <!--  一个功能对应一个 session  -->
-    <div class="session" v-for="session in sessions">
+    <div class="session" v-for="session in sessions" :key="session.id">
       <FunctionCard style="width: 80%" :function-name="session.name" :function-path="session.path"
                     :demo-img-url_a="session.demoImgUrlA" :demo-img-url_b="session.demoImgUrlB"
                     :demo-img-url_c="session.demoImgUrlC" :demo-img-url_d="session.demoImgUrlD"/>
